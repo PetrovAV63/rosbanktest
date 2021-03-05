@@ -11,23 +11,32 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/*
+Программа использует дополнительную зависимость для работы с excel, Apache POI.
+Файл test.xls содержит данные о Person.
+Класс Person описывает сущности.
+ */
+
 public class ReadXLS {
+    private static String PATH = "/home/enai/IdeaProjects/rosbanktest/src/main/java/ru/enai/taskfour/test.xlsx";
     public static void main(String[] args) {
-        String path = null;
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));) {
-            path = reader.readLine();
+        Integer id = null;
+        try (BufferedReader reader = new BufferedReader
+                (new InputStreamReader(System.in)))
+        {
+            System.out.println("Введите id");
+            id = Integer.parseInt(reader.readLine());
         }
         catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(connectionExcel(path, 3));
+        System.out.println(connectionExcel(id));
     }
 
-    private static Person connectionExcel(String path, Integer id) {
+    private static Person connectionExcel(Integer id) {
         Person person = null;
-        if (path != null) {
-            try (OPCPackage pkg = OPCPackage.open(new File(path));
-                 XSSFWorkbook workbook = new XSSFWorkbook(pkg);) {
+
+            try (XSSFWorkbook workbook = new XSSFWorkbook(new File(PATH))) {
                 for (Sheet sheet : workbook) {
                     if (sheet.getRow(id) != null) {
                         Row row = sheet.getRow(id);
@@ -40,11 +49,6 @@ public class ReadXLS {
             } catch (InvalidFormatException | IOException in) {
                 in.printStackTrace();
             }
-        }
-        else {
-            System.out.println("No path");
-            System.exit(1);
-        }
         return person;
     }
 }

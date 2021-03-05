@@ -1,5 +1,10 @@
 package ru.enai.taskone;
 
+/*
+Программа запускается с аргументом коммандной строки.
+Аргумент должен быть путем к файлу где содержится текст.
+ */
+
 import java.io.*;
 import java.util.Arrays;
 import java.util.Set;
@@ -14,17 +19,20 @@ public class UniqWordsCount {
         }
     }
 
-    private static Integer wordsCount(String arg) {
+    private static String wordsCount(String arg) {
         Set<String> list = new TreeSet<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(arg));) {
+
           while (reader.ready()) {
               String fileIn = reader.readLine();
-              String[] arrString = fileIn.replaceAll("\\p{Punct}", "").split("\\s+");
+              String[] arrString = fileIn.replaceAll("\\p{Punct}", "")
+                      .split("\\s+");
               list.addAll(Arrays.asList(arrString));
           }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return list.size();
+        return "В строке: " + list.size() + " уникальных слов. Слова: " + list;
     }
 }

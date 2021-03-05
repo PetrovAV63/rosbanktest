@@ -6,11 +6,24 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+Программа запускается в консольном режиме.
+Ввод строки производится в консоль.
+Вывод в консоль.
+ */
 public class CharFinder {
-    public static void main(String[] args) throws IOException {
-        String line = new BufferedReader(new InputStreamReader(System.in)).readLine();
-        System.out.println(finderRepeatedChar(line));
 
+    public static void main(String[] args) throws IOException {
+
+        try(BufferedReader reader = new BufferedReader
+                (new InputStreamReader(System.in))) {
+
+            String line = reader.readLine();
+            System.out.println(finderRepeatedChar(line));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static String finderRepeatedChar(String line) {
