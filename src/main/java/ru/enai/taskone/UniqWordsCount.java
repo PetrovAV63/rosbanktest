@@ -23,12 +23,12 @@ public class UniqWordsCount {
         Set<String> list = new TreeSet<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(arg));) {
 
-          while (reader.ready()) {
-              String fileIn = reader.readLine();
-              String[] arrString = fileIn.replaceAll("\\p{Punct}", "")
-                      .split("\\s+");
-              list.addAll(Arrays.asList(arrString));
-          }
+            while (reader.ready()) {
+                String fileIn = reader.readLine();
+                String[] arrString = fileIn.replaceAll("\\p{Punct}", "")
+                        .split("\\s+");
+                list.addAll(Arrays.asList(arrString));
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

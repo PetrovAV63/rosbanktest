@@ -20,8 +20,7 @@ public class TestJDBC {
             if (result.next()) {
                 resultQuery += result.getString(1);
             }
-        }
-        catch (SQLException throwables) {
+        } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return resultQuery;

@@ -15,7 +15,7 @@ public class CharFinder {
 
     public static void main(String[] args) throws IOException {
 
-        try(BufferedReader reader = new BufferedReader
+        try (BufferedReader reader = new BufferedReader
                 (new InputStreamReader(System.in))) {
 
             String line = reader.readLine();
@@ -28,7 +28,7 @@ public class CharFinder {
 
     private static String finderRepeatedChar(String line) {
         StringBuilder result = new StringBuilder();
-        Map<Character,Integer> map = new HashMap<Character,Integer>();
+        Map<Character, Integer> map = new HashMap<Character, Integer>();
         for (int i = 0; i < line.length(); i++) {
             char c = line.charAt(i);
             if (map.containsKey(c)) {
@@ -40,12 +40,12 @@ public class CharFinder {
         }
         for (Map.Entry<Character, Integer> pair : map.entrySet())
             result.append("Chair: ")
-            .append("\"")
-            .append(pair.getKey())
-            .append("\"")
-            .append(" repeated: ")
-            .append(pair.getValue())
-            .append("\n");
+                    .append("\"")
+                    .append(pair.getKey())
+                    .append("\"")
+                    .append(" repeated: ")
+                    .append(pair.getValue())
+                    .append("\n");
 
         return result.toString();
     }

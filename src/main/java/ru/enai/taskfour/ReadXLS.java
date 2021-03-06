@@ -18,16 +18,15 @@ import java.io.InputStreamReader;
  */
 
 public class ReadXLS {
-    private static String PATH = "/home/enai/IdeaProjects/rosbanktest/src/main/java/ru/enai/taskfour/test.xlsx";
+    private static String PATH = "C:\\Users\\Toha7\\IdeaProjects\\rosbanktest\\src\\main\\java\\ru\\enai\\taskfour\\test.xlsx";
+
     public static void main(String[] args) {
         Integer id = null;
         try (BufferedReader reader = new BufferedReader
-                (new InputStreamReader(System.in)))
-        {
+                (new InputStreamReader(System.in))) {
             System.out.println("Введите id");
             id = Integer.parseInt(reader.readLine());
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println(connectionExcel(id));
@@ -36,19 +35,19 @@ public class ReadXLS {
     private static Person connectionExcel(Integer id) {
         Person person = null;
 
-            try (XSSFWorkbook workbook = new XSSFWorkbook(new File(PATH))) {
-                for (Sheet sheet : workbook) {
-                    if (sheet.getRow(id) != null) {
-                        Row row = sheet.getRow(id);
-                        person = new Person(id, row.getCell(0).toString(), row.getCell(1).toString());
-                    } else {
-                        System.out.println("Id no such");
-                        System.exit(1);
-                    }
+        try (XSSFWorkbook workbook = new XSSFWorkbook(new File(PATH))) {
+            for (Sheet sheet : workbook) {
+                if (sheet.getRow(id) != null) {
+                    Row row = sheet.getRow(id);
+                    person = new Person(id, row.getCell(0).toString(), row.getCell(1).toString());
+                } else {
+                    System.out.println("Id no such");
+                    System.exit(1);
                 }
-            } catch (IOException | InvalidFormatException in) {
-                in.printStackTrace();
             }
+        } catch (IOException | InvalidFormatException in) {
+            in.printStackTrace();
+        }
         return person;
     }
 }
