@@ -40,13 +40,13 @@ public class ReadXLS {
                 for (Sheet sheet : workbook) {
                     if (sheet.getRow(id) != null) {
                         Row row = sheet.getRow(id);
-                        person = new Person(id, row.getCell(0).toString(), row.getCell(1).toString()); }
-                    else {
+                        person = new Person(id, row.getCell(0).toString(), row.getCell(1).toString());
+                    } else {
                         System.out.println("Id no such");
                         System.exit(1);
                     }
                 }
-            } catch (InvalidFormatException | IOException in) {
+            } catch (IOException | InvalidFormatException in) {
                 in.printStackTrace();
             }
         return person;
