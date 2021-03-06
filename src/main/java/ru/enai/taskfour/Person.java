@@ -1,9 +1,9 @@
 package ru.enai.taskfour;
 
 public class Person {
-    private int id;
-    private String name;
-    private String surname;
+    private final int id;
+    private final String name;
+    private final String surname;
 
     public Person(int id, String name, String surname) {
         this.id = id;
