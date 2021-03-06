@@ -2,10 +2,10 @@ package ru.enai.taskfour;
 
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -18,7 +18,8 @@ import java.io.InputStreamReader;
  */
 
 public class ReadXLS {
-    private static String PATH = "C:\\Users\\Toha7\\IdeaProjects\\rosbanktest\\src\\main\\java\\ru\\enai\\taskfour\\test.xlsx";
+    private static String PATH = "C:\\Users\\Toha7\\IdeaProjects\\rosbanktest\\" + // Путь к файлу на Linux будет другой
+            "src\\main\\java\\ru\\enai\\taskfour\\test.xlsx";
 
     public static void main(String[] args) {
         Integer id = null;

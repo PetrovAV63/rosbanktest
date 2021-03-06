@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class CharFinder {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         try (BufferedReader reader = new BufferedReader
                 (new InputStreamReader(System.in))) {
@@ -28,7 +28,7 @@ public class CharFinder {
 
     private static String finderRepeatedChar(String line) {
         StringBuilder result = new StringBuilder();
-        Map<Character, Integer> map = new HashMap<Character, Integer>();
+        Map<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < line.length(); i++) {
             char c = line.charAt(i);
             if (map.containsKey(c)) {
